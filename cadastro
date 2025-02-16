@@ -25,7 +25,7 @@ class Aplicativo():
 
     def frame_tela(self):
         self.frame_1 = Frame(self.interface)
-        self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.40)
+        self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.465)
         
         self.frame_2 = Frame(self.interface)
         self.frame_2.place(relx=0.02,rely=0.51,relwidth=0.96,relheight=0.465)

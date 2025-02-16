@@ -46,10 +46,10 @@ class Aplicativo():
 
     def frame_tela(self):
         self.frame_1 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
-        self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.465)
+        self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.60)
         
         self.frame_2 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
-        self.frame_2.place(relx=0.02,rely=0.51,relwidth=0.96,relheight=0.465)
+        self.frame_2.place(relx=0.02,rely=0.65,relwidth=0.96,relheight=0.30)
     
     def entradas_de_dados(self):
         self.nome_entry = Entry(self.frame_1)

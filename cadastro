@@ -16,6 +16,7 @@ class Aplicativo():
         self.frame_tela()
         self.rotulos()
         self.entradas_de_dados()
+        self.botoes()
         interface.mainloop()
 
     def tela(self):
@@ -71,6 +72,22 @@ class Aplicativo():
 
         self.observacoes_entry = Entry(self.frame_1)
         self.observacoes_entry.place(relx=0.13,rely=0.62,relwidth=0.4,relheight=0.30)
+
+    def botoes(self):
+        self.buscar = Button(self.frame_1,text='BUSCAR')
+        self.buscar.place(relx=0.82,rely=0.02,relwidth=0.15,relheight=0.15)
+
+        self.cadastrar = Button(self.frame_1,text='CADASTRAR')
+        self.cadastrar.place(relx=0.82,rely=0.21,relwidth=0.15,relheight=0.15)
+
+        self.limpar = Button(self.frame_1,text='LIMPAR TELA')
+        self.limpar.place(relx=0.82,rely=0.40,relwidth=0.15,relheight=0.15)
+
+        self.alterar = Button(self.frame_1,text='ALTERAR')
+        self.alterar.place(relx=0.82,rely=0.59,relwidth=0.15,relheight=0.15)
+
+        self.deletar = Button(self.frame_1,text='DELETAR')
+        self.deletar.place(relx=0.82,rely=0.78,relwidth=0.15,relheight=0.15)
 
 
 Aplicativo()

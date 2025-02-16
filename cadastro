@@ -1,0 +1,30 @@
+#criar interface gráfica
+#criar classes para organizar o códiago# integração com banco de dados Sqlite# campo de cadastro de Nome, nascimento, cpf, cartão do sus, endereço, cid, responsável, contato do responsável, alergias, observações.
+# botoes de registrar, alterar, deletar , limpar tela, buscar
+# mostrar na tela.
+
+from tkinter import *
+import sqlite3
+from tkinter import ttk
+
+interface = Tk()
+
+class Aplicativo():
+    def __init__(self):
+        self.interface = interface
+        self.tela()
+        self.frame_tela()
+        interface.mainloop()
+
+    def tela(self):
+        self.interface.title('Cadastro de Alunos')
+        self.interface.configure(background='#123456')
+        self.interface.geometry('900x500')
+        self.interface.resizable(True,True)
+        self.interface.minsize(width=400, height=250)
+
+    def frame_tela(self):
+        self.frame_1 = Frame(self.interface)
+        self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.40)
+
+Aplicativo()

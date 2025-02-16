@@ -14,6 +14,7 @@ class Aplicativo():
         self.interface = interface
         self.tela()
         self.frame_tela()
+        self.rotulos()
         interface.mainloop()
 
     def tela(self):
@@ -22,6 +23,25 @@ class Aplicativo():
         self.interface.geometry('900x500')
         self.interface.resizable(True,True)
         self.interface.minsize(width=400, height=250)
+
+    def rotulos(self):
+        self.nome_label = Label(self.frame_1,text='Nome')
+        self.nome_label.place(relx=0.02,rely=0.02,relwidth=0.10,relheight=0.12)
+
+        self.cpf_label= Label(self.frame_1,text='CPF')
+        self.cpf_label.place(relx=0.55,rely=0.02,relwidth=0.10,relheight=0.12)
+
+        self.nascimento_label = Label(self.frame_1,text='Nascimento')
+        self.nascimento_label.place(relx=0.02,rely=0.18,relwidth=0.10,relheight=0.12)
+
+        self.sus_label = Label(self.frame_1,text='Cartão do SUS')
+        self.sus_label.place(relx=0.02,rely=0.36,relwidth=0.10,relheight=0.12)
+
+        self.telefone_label = Label(self.frame_1,text='Contato')
+        self.telefone_label.place(relx=0.02,rely=0.54,relwidth=0.10,relheight=0.12)
+
+        self.observacao_label = Label(self.frame_1,text='Observações')
+        self.observacao_label.place(relx=0.02,rely=0.72,relwidth=0.10,relheight=0.12)
 
     def frame_tela(self):
         self.frame_1 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)

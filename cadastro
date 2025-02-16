@@ -25,50 +25,52 @@ class Aplicativo():
         self.interface.resizable(True,True)
         self.interface.minsize(width=400, height=250)
 
-    def rotulos(self):
-        self.nome_label = Label(self.frame_1,text='Nome')
-        self.nome_label.place(relx=0.02,rely=0.02,relwidth=0.10,relheight=0.12)
-
-        self.cpf_label= Label(self.frame_1,text='CPF')
-        self.cpf_label.place(relx=0.55,rely=0.02,relwidth=0.10,relheight=0.12)
-
-        self.nascimento_label = Label(self.frame_1,text='Nascimento')
-        self.nascimento_label.place(relx=0.02,rely=0.18,relwidth=0.10,relheight=0.12)
-
-        self.sus_label = Label(self.frame_1,text='Cartão do SUS')
-        self.sus_label.place(relx=0.02,rely=0.36,relwidth=0.10,relheight=0.12)
-
-        self.telefone_label = Label(self.frame_1,text='Contato')
-        self.telefone_label.place(relx=0.02,rely=0.54,relwidth=0.10,relheight=0.12)
-
-        self.observacao_label = Label(self.frame_1,text='Observações')
-        self.observacao_label.place(relx=0.02,rely=0.72,relwidth=0.10,relheight=0.12)
-
     def frame_tela(self):
         self.frame_1 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
         self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.60)
         
         self.frame_2 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
         self.frame_2.place(relx=0.02,rely=0.65,relwidth=0.96,relheight=0.30)
+
+    def rotulos(self):
+        self.nome_label = Label(self.frame_1,text='Nome')
+        self.nome_label.place(relx=0.01,rely=0.02,relwidth=0.10,relheight=0.12)
+
+        self.cpf_label= Label(self.frame_1,text='CPF')
+        self.cpf_label.place(relx=0.52,rely=0.02,relwidth=0.10,relheight=0.12)
+
+        self.nascimento_label = Label(self.frame_1,text='Nascimento')
+        self.nascimento_label.place(relx=0.01,rely=0.17,relwidth=0.10,relheight=0.12)
+
+        self.sus_label = Label(self.frame_1,text='Cartão do SUS')
+        self.sus_label.place(relx=0.01,rely=0.32,relwidth=0.10,relheight=0.12)
+
+        self.telefone_label = Label(self.frame_1,text='Contato')
+        self.telefone_label.place(relx=0.01,rely=0.47,relwidth=0.10,relheight=0.12)
+
+        self.observacao_label = Label(self.frame_1,text='Observações')
+        self.observacao_label.place(relx=0.01,rely=0.62,relwidth=0.10,relheight=0.12)
+
+
     
     def entradas_de_dados(self):
         self.nome_entry = Entry(self.frame_1)
-        self.nome_entry.place(relx=0.16,rely=0.02,relwidth=0.4,relheight=0.12)
+        self.nome_entry.place(relx=0.13,rely=0.02,relwidth=0.4,relheight=0.12)
 
         self.cpf_entry = Entry(self.frame_1)
-        self.cpf_entry.place(relx=0.65,rely=0.02,relwidth=0.3,relheight=0.12)
+        self.cpf_entry.place(relx=0.60,rely=0.02,relwidth=0.2,relheight=0.12)
 
         self.nascimento_entry = Entry(self.frame_1)
-        self.nascimento_entry.place(relx=0.16,rely=0.18,relwidth=0.30,relheight=0.12)
+        self.nascimento_entry.place(relx=0.13,rely=0.17,relwidth=0.40,relheight=0.12)
 
         self.sus_entry = Entry(self.frame_1)
-        self.sus_entry.place(relx=0.16,rely=0.36,relwidth=0.30,relheight=0.12)
+        self.sus_entry.place(relx=0.13,rely=0.32,relwidth=0.4,relheight=0.12)
 
         self.telefone_entry = Entry(self.frame_1)
-        self.telefone_entry.place(relx=0.16,rely=0.54,relwidth=0.30,relheight=0.12)
+        self.telefone_entry.place(relx=0.13,rely=0.47,relwidth=0.4,relheight=0.12)
 
         self.observacoes_entry = Entry(self.frame_1)
-        self.observacoes_entry.place(relx=0.16,rely=0.72,relwidth=0.30,relheight=0.24)
+        self.observacoes_entry.place(relx=0.13,rely=0.62,relwidth=0.4,relheight=0.30)
 
 
 Aplicativo()

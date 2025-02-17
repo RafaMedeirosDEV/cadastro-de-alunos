@@ -36,49 +36,55 @@ class Aplicativo():
         self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.60)
         
         self.frame_2 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
-        self.frame_2.place(relx=0.02,rely=0.65,relwidth=0.96,relheight=0.30)
+        self.frame_2.place(relx=0.02,rely=0.65,relwidth=0.96,relheight=0.32)
 
 #criando rótulos para a entrada de dados que serão cadastrados
 
     def rotulos(self):
-        self.nome_label = Label(self.frame_1,text='Nome')
-        self.nome_label.place(relx=0.01,rely=0.02,relwidth=0.10,relheight=0.12)
+        self.nome_label = Label(self.frame_1,text='Nome',font=('verdana',11,'bold'))
+        self.nome_label.place(relx=0.01,rely=0.02,relwidth=0.13,relheight=0.12)
 
-        self.cpf_label= Label(self.frame_1,text='CPF')
-        self.cpf_label.place(relx=0.52,rely=0.02,relwidth=0.10,relheight=0.12)
+        self.cpf_label= Label(self.frame_1,text='CPF',font=('verdana',11,'bold'))
+        self.cpf_label.place(relx=0.50,rely=0.02,relwidth=0.13,relheight=0.12)
 
-        self.nascimento_label = Label(self.frame_1,text='Nascimento')
-        self.nascimento_label.place(relx=0.01,rely=0.17,relwidth=0.10,relheight=0.12)
+        self.nascimento_label = Label(self.frame_1,text='Nascimento',font=('verdana',11,'bold'))
+        self.nascimento_label.place(relx=0.01,rely=0.18,relwidth=0.13,relheight=0.12)
 
-        self.sus_label = Label(self.frame_1,text='Cartão do SUS')
-        self.sus_label.place(relx=0.01,rely=0.32,relwidth=0.10,relheight=0.12)
+        self.sus_label = Label(self.frame_1,text='Nº SUS',font=('verdana',11,'bold'))
+        self.sus_label.place(relx=0.01,rely=0.34,relwidth=0.13,relheight=0.12)
 
-        self.telefone_label = Label(self.frame_1,text='Contato')
-        self.telefone_label.place(relx=0.01,rely=0.47,relwidth=0.10,relheight=0.12)
+        self.telefone_label = Label(self.frame_1,text='Contato',font=('verdana',11,'bold'))
+        self.telefone_label.place(relx=0.01,rely=0.49,relwidth=0.13,relheight=0.12)
 
-        self.observacao_label = Label(self.frame_1,text='Observações')
-        self.observacao_label.place(relx=0.01,rely=0.62,relwidth=0.10,relheight=0.12)
+        self.alergia_label = Label(self.frame_1,text='Alergia',font=('verdana',11,'bold'))
+        self.alergia_label.place(relx=0.01,rely=0.66,relwidth=0.13,relheight=0.12)
+
+        self.observacao_label = Label(self.frame_1,text='Observações', font=('verdana',11,'bold'))
+        self.observacao_label.place(relx=0.01,rely=0.82,relwidth=0.13,relheight=0.12)
 
 #Criando função de entrada que receberão os dados cadastrados
     
     def entradas_de_dados(self):
-        self.nome_entry = Entry(self.frame_1)
-        self.nome_entry.place(relx=0.13,rely=0.02,relwidth=0.4,relheight=0.12)
+        self.nome_entry = Entry(self.frame_1,font=('arial',12))
+        self.nome_entry.place(relx=0.15,rely=0.02,relwidth=0.37,relheight=0.12)
 
-        self.cpf_entry = Entry(self.frame_1)
+        self.cpf_entry = Entry(self.frame_1,font=('arial',12))
         self.cpf_entry.place(relx=0.60,rely=0.02,relwidth=0.2,relheight=0.12)
 
-        self.nascimento_entry = Entry(self.frame_1)
-        self.nascimento_entry.place(relx=0.13,rely=0.17,relwidth=0.40,relheight=0.12)
+        self.nascimento_entry = Entry(self.frame_1,font=('arial',12))
+        self.nascimento_entry.place(relx=0.15,rely=0.18,relwidth=0.37,relheight=0.12)
 
-        self.sus_entry = Entry(self.frame_1)
-        self.sus_entry.place(relx=0.13,rely=0.32,relwidth=0.4,relheight=0.12)
+        self.sus_entry = Entry(self.frame_1,font=('arial',12))
+        self.sus_entry.place(relx=0.15,rely=0.34,relwidth=0.37,relheight=0.12)
 
-        self.telefone_entry = Entry(self.frame_1)
-        self.telefone_entry.place(relx=0.13,rely=0.47,relwidth=0.4,relheight=0.12)
+        self.telefone_entry = Entry(self.frame_1,font=('arial',12))
+        self.telefone_entry.place(relx=0.15,rely=0.49,relwidth=0.37,relheight=0.12)
 
-        self.observacoes_entry = Entry(self.frame_1)
-        self.observacoes_entry.place(relx=0.13,rely=0.62,relwidth=0.4,relheight=0.30)
+        self.alergia_entry = Entry(self.frame_1,font=('arial',12))
+        self.alergia_entry.place(relx=0.15,rely=0.66,relwidth=0.37,relheight=0.12)
+
+        self.observacao_entry = Entry(self.frame_1, font=('arial',12))
+        self.observacao_entry.place(relx=0.15,rely=0.82,relwidth=0.37,relheight=0.12)
 
  #crinado botões CRUD, para Buscar, cadastrar, Limpar tela, Alterar e Deletar
 

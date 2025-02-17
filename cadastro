@@ -9,6 +9,7 @@ from tkinter import ttk
 
 interface = Tk()
 
+#criando uma classe para receber funções
 class Aplicativo():
     def __init__(self):
         self.interface = interface
@@ -19,6 +20,8 @@ class Aplicativo():
         self.botoes()
         interface.mainloop()
 
+#crinado uma função de Interface e estilizando a Interface
+
     def tela(self):
         self.interface.title('Cadastro de Alunos')
         self.interface.configure(background='#123456')
@@ -26,12 +29,16 @@ class Aplicativo():
         self.interface.resizable(True,True)
         self.interface.minsize(width=400, height=250)
 
+#criando a separação de Frame de Tela  e 2
+
     def frame_tela(self):
         self.frame_1 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
         self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.60)
         
         self.frame_2 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
         self.frame_2.place(relx=0.02,rely=0.65,relwidth=0.96,relheight=0.30)
+
+#criando rótulos para a entrada de dados que serão cadastrados
 
     def rotulos(self):
         self.nome_label = Label(self.frame_1,text='Nome')
@@ -52,7 +59,7 @@ class Aplicativo():
         self.observacao_label = Label(self.frame_1,text='Observações')
         self.observacao_label.place(relx=0.01,rely=0.62,relwidth=0.10,relheight=0.12)
 
-
+#Criando função de entrada que receberão os dados cadastrados
     
     def entradas_de_dados(self):
         self.nome_entry = Entry(self.frame_1)
@@ -72,6 +79,8 @@ class Aplicativo():
 
         self.observacoes_entry = Entry(self.frame_1)
         self.observacoes_entry.place(relx=0.13,rely=0.62,relwidth=0.4,relheight=0.30)
+
+ #crinado botões CRUD, para Buscar, cadastrar, Limpar tela, Alterar e Deletar
 
     def botoes(self):
         self.buscar = Button(self.frame_1,text='BUSCAR',bd=4)

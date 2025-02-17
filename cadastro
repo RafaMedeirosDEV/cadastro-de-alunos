@@ -74,19 +74,19 @@ class Aplicativo():
         self.observacoes_entry.place(relx=0.13,rely=0.62,relwidth=0.4,relheight=0.30)
 
     def botoes(self):
-        self.buscar = Button(self.frame_1,text='BUSCAR')
+        self.buscar = Button(self.frame_1,text='BUSCAR',bd=4)
         self.buscar.place(relx=0.82,rely=0.02,relwidth=0.15,relheight=0.15)
 
-        self.cadastrar = Button(self.frame_1,text='CADASTRAR')
+        self.cadastrar = Button(self.frame_1,text='CADASTRAR',bd=4)
         self.cadastrar.place(relx=0.82,rely=0.21,relwidth=0.15,relheight=0.15)
 
-        self.limpar = Button(self.frame_1,text='LIMPAR TELA')
+        self.limpar = Button(self.frame_1,text='LIMPAR TELA',bd=4)
         self.limpar.place(relx=0.82,rely=0.40,relwidth=0.15,relheight=0.15)
 
-        self.alterar = Button(self.frame_1,text='ALTERAR')
+        self.alterar = Button(self.frame_1,text='ALTERAR',bd=4)
         self.alterar.place(relx=0.82,rely=0.59,relwidth=0.15,relheight=0.15)
 
-        self.deletar = Button(self.frame_1,text='DELETAR')
+        self.deletar = Button(self.frame_1,text='DELETAR',bd=4)
         self.deletar.place(relx=0.82,rely=0.78,relwidth=0.15,relheight=0.15)
 
 

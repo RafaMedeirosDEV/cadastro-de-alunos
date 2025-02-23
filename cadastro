@@ -18,6 +18,7 @@ class Aplicativo():
         self.rotulos()
         self.entradas_de_dados()
         self.botoes()
+        self.lista_frame2()
         interface.mainloop()
 
 #crinado uma função de Interface e estilizando a Interface
@@ -33,10 +34,10 @@ class Aplicativo():
 
     def frame_tela(self):
         self.frame_1 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
-        self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.60)
+        self.frame_1.place(relx=0.02,rely=0.02,relwidth=0.96,relheight=0.55)
         
         self.frame_2 = Frame(self.interface,bd=4,highlightbackground='#759feb',highlightthickness=2)
-        self.frame_2.place(relx=0.02,rely=0.65,relwidth=0.96,relheight=0.32)
+        self.frame_2.place(relx=0.02,rely=0.59,relwidth=0.96,relheight=0.39)
 
 #criando rótulos para a entrada de dados que serão cadastrados
 
@@ -103,6 +104,34 @@ class Aplicativo():
 
         self.deletar = Button(self.frame_1,text='DELETAR',bd=4)
         self.deletar.place(relx=0.82,rely=0.78,relwidth=0.15,relheight=0.15)
+
+#criando visualização no frame2 com o Treeview
+    def lista_frame2(self):
+        self.lista_alunos = ttk.Treeview(self.frame_2,height=3,columns=('col1','col','col3','col4',
+                                                                        'col5','col6','col7'))
+#nomeando as colunas do treeview
+
+        self.lista_alunos.heading('#0',text='')
+        self.lista_alunos.heading('#1',text='Nome')
+        self.lista_alunos.heading('#2',text='CPF')
+        self.lista_alunos.heading('#3',text='Nascimento')
+        self.lista_alunos.heading('#4',text='Nº do SUS')
+        self.lista_alunos.heading('#5',text='Telefone')
+        self.lista_alunos.heading('#6',text='Alergias')
+        self.lista_alunos.heading('#7',text='Obs.')
+
+#dimensionando as colunas, obs.a colula #0 precisa ser colocada pois ela é um padrão, entao para não ocupar espaça colocamos o menor valor
+
+        self.lista_alunos.column('#0',width=1)
+        self.lista_alunos.column('#1',width=100)
+        self.lista_alunos.column('#2',width=50)
+        self.lista_alunos.column('#3',width=50)
+        self.lista_alunos.column('#4',width=50)
+        self.lista_alunos.column('#5',width=50)
+        self.lista_alunos.column('#6',width=50)
+        self.lista_alunos.column('#7',width=100)
+
+        self.lista_alunos.place(relx=0.01,rely=0.01,relheight=0.90,relwidth=0.90)
 
 
 Aplicativo()

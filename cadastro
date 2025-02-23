@@ -9,6 +9,17 @@ from tkinter import ttk
 
 interface = Tk()
 
+#criando a função de Limpar a Tela
+class Funçoes():
+    def limpar_tela(self):
+        self.nome_entry
+        self.cpf_entry
+        self.nascimento_entry
+        self.sus_entry
+        self.telefone_entry
+        self.alergia_entry
+        self.observacao_entry
+
 #criando uma classe para receber funções
 class Aplicativo():
     def __init__(self):
@@ -122,8 +133,8 @@ class Aplicativo():
 
 #dimensionando as colunas, obs.a colula #0 precisa ser colocada pois ela é um padrão, entao para não ocupar espaça colocamos o menor valor
 
-        self.lista_alunos.column('#0',width=1)
-        self.lista_alunos.column('#1',width=100)
+        self.lista_alunos.column('#0',width=0)
+        self.lista_alunos.column('#1',width=150)
         self.lista_alunos.column('#2',width=50)
         self.lista_alunos.column('#3',width=50)
         self.lista_alunos.column('#4',width=50)
@@ -131,7 +142,11 @@ class Aplicativo():
         self.lista_alunos.column('#6',width=50)
         self.lista_alunos.column('#7',width=100)
 
-        self.lista_alunos.place(relx=0.01,rely=0.01,relheight=0.90,relwidth=0.90)
+        self.lista_alunos.place(relx=0.01,rely=0.01,relheight=0.95,relwidth=0.95)
+
+        self.scroolCadastro = Scrollbar(self.frame_2,orient='vertical')
+        self.lista_alunos.configure(yscroll=self.scroolCadastro.set)
+        self.scroolCadastro.place(relx=0.96,rely=0.01,relwidth=0.04,relheight=0.90)
 
 
 Aplicativo()

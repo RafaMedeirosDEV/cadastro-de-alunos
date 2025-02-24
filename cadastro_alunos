@@ -1,5 +1,5 @@
 #criar interface gráfica
-#criar classes para organizar o códiago# integração com banco de dados Sqlite# campo de cadastro de Nome, nascimento, cpf, cartão do sus, endereço, cid, responsável, contato do responsável, alergias, observações.
+#criar classes para organizar o código# integração com banco de dados Sqlite campo de cadastro de Nome, nascimento, cpf, cartão do sus, contato do responsável, alergias, observações.
 # botoes de registrar, alterar, deletar , limpar tela, buscar
 # mostrar na tela.
 
@@ -10,18 +10,40 @@ from tkinter import ttk
 interface = Tk()
 
 #criando a função de Limpar a Tela
-class Funçoes():
+class Funcoes():
     def limpar_tela(self):
-        self.nome_entry
-        self.cpf_entry
-        self.nascimento_entry
-        self.sus_entry
-        self.telefone_entry
-        self.alergia_entry
-        self.observacao_entry
+        self.nome_entry.delete(0,END)
+        self.cpf_entry.delete(0,END)
+        self.nascimento_entry.delete(0,END)
+        self.sus_entry.delete(0,END)
+        self.telefone_entry.delete(0,END)
+        self.alergia_entry.delete(0,END)
+        self.observacao_entry.delete(0,END)
+    #criar função de para conexão com Banco de dados
+    def conecta_bd(self):
+        self.conn = sqlite3.connect('dados_alunos.bd')
+        self.cursor = self.conn.cursor();print('Conectando ao banco de Dados')
+    #desconectar o banco de dados
+    def desconecta_bd(self):
+        self.conn.close()
+
+    def dados_aluno(self):
+        self.conecta_bd()
+        #montando a tabela de cadastro de dados básicos do Aluno
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS aluno(
+                            nome CHAR(40) NOT NULL,
+                            cpf VARCHAR(11) NOT NULL,
+                            nascimento VARCHAR() NOT NULL,
+                            sus VARCHAR() NOT NULL,
+                            telefone VARCHAR (11) NOT NULL,
+                            alergia CHAR(),
+                            observacao VARCHAR(),
+            );
+        """)
 
 #criando uma classe para receber funções
-class Aplicativo():
+class Aplicativo(Funcoes):
     def __init__(self):
         self.interface = interface
         self.tela()
@@ -30,6 +52,8 @@ class Aplicativo():
         self.entradas_de_dados()
         self.botoes()
         self.lista_frame2()
+        self.dados_aluno()
+        
         interface.mainloop()
 
 #crinado uma função de Interface e estilizando a Interface
@@ -107,7 +131,7 @@ class Aplicativo():
         self.cadastrar = Button(self.frame_1,text='CADASTRAR',bd=4)
         self.cadastrar.place(relx=0.82,rely=0.21,relwidth=0.15,relheight=0.15)
 
-        self.limpar = Button(self.frame_1,text='LIMPAR TELA',bd=4)
+        self.limpar = Button(self.frame_1,text='LIMPAR TELA',bd=4,command=self.limpar_tela)
         self.limpar.place(relx=0.82,rely=0.40,relwidth=0.15,relheight=0.15)
 
         self.alterar = Button(self.frame_1,text='ALTERAR',bd=4)

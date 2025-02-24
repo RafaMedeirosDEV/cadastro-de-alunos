@@ -4,8 +4,8 @@
 # mostrar na tela.
 
 from tkinter import *
-import sqlite3
 from tkinter import ttk
+import sqlite3
 
 interface = Tk()
 
@@ -27,20 +27,22 @@ class Funcoes():
     def desconecta_bd(self):
         self.conn.close()
 
-    def dados_aluno(self):
-        self.conecta_bd()
+    def montaTabela(self):
+        self.conecta_bd();print('Conectado')
         #montando a tabela de cadastro de dados básicos do Aluno
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS aluno(
-                            nome CHAR(40) NOT NULL,
-                            cpf VARCHAR(11) NOT NULL,
-                            nascimento VARCHAR() NOT NULL,
-                            sus VARCHAR() NOT NULL,
-                            telefone VARCHAR (11) NOT NULL,
-                            alergia CHAR(),
-                            observacao VARCHAR(),
+                nome CHAR(50),
+                cpf INTAGER(11) NOT NULL PRIMARY KEY,
+                nascimento DATE(8),
+                sus INTEGER(20),
+                telefone VARCHAR(12),
+                alergia TEXT(40),
+                observacao TEXT(40)       
             );
         """)
+        self.conn.commit();print('Banco de Dados Criado')
+        self.desconecta_bd()
 
 #criando uma classe para receber funções
 class Aplicativo(Funcoes):
@@ -52,7 +54,7 @@ class Aplicativo(Funcoes):
         self.entradas_de_dados()
         self.botoes()
         self.lista_frame2()
-        self.dados_aluno()
+        self.montaTabela()
         
         interface.mainloop()
 

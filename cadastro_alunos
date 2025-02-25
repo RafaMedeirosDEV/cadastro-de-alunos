@@ -25,7 +25,7 @@ class Funcoes():
         self.cursor = self.conn.cursor();print('Conectando ao banco de Dados')
     #desconectar o banco de dados
     def desconecta_bd(self):
-        self.conn.close()
+        self.conn.close();print('Conexão desativada')
 
     def montaTabela(self):
         self.conecta_bd();print('Conectado')
@@ -33,9 +33,9 @@ class Funcoes():
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS aluno(
                 nome CHAR(50),
-                cpf INTAGER(11) NOT NULL PRIMARY KEY,
+                cpf VARCHAR(11) NOT NULL PRIMARY KEY,
                 nascimento DATE(8),
-                sus INTEGER(20),
+                sus Varchar(20),
                 telefone VARCHAR(12),
                 alergia TEXT(40),
                 observacao TEXT(40)       
@@ -43,6 +43,34 @@ class Funcoes():
         """)
         self.conn.commit();print('Banco de Dados Criado')
         self.desconecta_bd()
+
+    def add_aluno(self):
+        self.nome = self.nome_entry.get()
+        self.cpf = self.cpf_entry.get()
+        self.nascimento = self.nascimento_entry.get()
+        self.sus = self.sus_entry.get()
+        self.telefone = self.telefone_entry.get()
+        self.alergia = self.alergia_entry.get()
+        self.observacao = self.observacao_entry.get()
+        self.conecta_bd()
+
+        self.cursor.execute(""" INSERT INTO aluno ( nome, cpf, nascimento, sus, telefone, alergia, observacao )
+             VALUES (?,?,?,?,?,?,?)""",(self.nome, self.cpf, self.nascimento, self.sus, self.telefone, self.alergia, self.observacao))
+        self.conn.commit()
+        self.desconecta_bd()
+        self.select_lista()
+        self.limpar_tela()
+
+    def select_lista(self):
+        self.lista_alunos.delete(*self.lista_alunos.get_children())
+        self.conecta_bd()
+
+        lista = self.cursor.execute("""SELECT nome, cpf, nascimento, sus, telefone, alergia, observacao FROM aluno ORDER BY nome ASC;""")
+        
+        for i in lista:
+            self.lista_alunos.insert("",END,values=i)
+        self.desconecta_bd()
+
 
 #criando uma classe para receber funções
 class Aplicativo(Funcoes):
@@ -55,6 +83,7 @@ class Aplicativo(Funcoes):
         self.botoes()
         self.lista_frame2()
         self.montaTabela()
+        self.select_lista()
         
         interface.mainloop()
 
@@ -130,7 +159,7 @@ class Aplicativo(Funcoes):
         self.buscar = Button(self.frame_1,text='BUSCAR',bd=4)
         self.buscar.place(relx=0.82,rely=0.02,relwidth=0.15,relheight=0.15)
 
-        self.cadastrar = Button(self.frame_1,text='CADASTRAR',bd=4)
+        self.cadastrar = Button(self.frame_1,text='CADASTRAR',bd=4, command= self.add_aluno)
         self.cadastrar.place(relx=0.82,rely=0.21,relwidth=0.15,relheight=0.15)
 
         self.limpar = Button(self.frame_1,text='LIMPAR TELA',bd=4,command=self.limpar_tela)
@@ -144,7 +173,7 @@ class Aplicativo(Funcoes):
 
 #criando visualização no frame2 com o Treeview
     def lista_frame2(self):
-        self.lista_alunos = ttk.Treeview(self.frame_2,height=3,columns=('col1','col','col3','col4',
+        self.lista_alunos = ttk.Treeview(self.frame_2,height=3,columns=('col1','col2','col3','col4',
                                                                         'col5','col6','col7'))
 #nomeando as colunas do treeview
 

@@ -94,12 +94,21 @@ class Funcoes():
     def deleta_cadastro(self):
         self.variaveis_do_cadastro()
         self.conecta_bd()
-        self.cursor.execute(f""" DELETE FROM aluno WHERE cpf = ?""",(self.cpf,))
+        self.cursor.execute(f""" DELETE FROM aluno WHERE cpf = ?""",[self.cpf])
         self.conn.commit()
         self.desconecta_bd()
         self.limpar_tela()
         self.select_lista()
 
+    def alterar_cadastro(self):
+        self.variaveis_do_cadastro()
+        self.conecta_bd()
+        self.cursor.execute(""" UPDATE aluno SET nome = ?, nascimento = ?, sus = ?,telefone = ?, alergia = ?, observacao = ?
+                            WHERE cpf = ? """,(self.nome, self.nascimento,self.sus, self.telefone, self.alergia, self.observacao, self.cpf))
+        self.conn.commit()
+        self.desconecta_bd()
+        self.select_lista()
+        self.limpar_tela()
 
 #criando uma classe para receber funções
 class Aplicativo(Funcoes):
@@ -194,7 +203,7 @@ class Aplicativo(Funcoes):
         self.limpar = Button(self.frame_1,text='LIMPAR TELA',bd=4,command=self.limpar_tela)
         self.limpar.place(relx=0.82,rely=0.40,relwidth=0.15,relheight=0.15)
 
-        self.alterar = Button(self.frame_1,text='ALTERAR',bd=4)
+        self.alterar = Button(self.frame_1,text='ALTERAR',bd=4,command=self.alterar_cadastro)
         self.alterar.place(relx=0.82,rely=0.59,relwidth=0.15,relheight=0.15)
 
         self.deletar = Button(self.frame_1,text='DELETAR',bd=4,command=self.deleta_cadastro)
@@ -228,7 +237,7 @@ class Aplicativo(Funcoes):
 
         self.lista_alunos.place(relx=0.01,rely=0.01,relheight=0.95,relwidth=0.95)
 
-        self.scroolCadastro = Scrollbar(self.frame_2,orient='vertical')
+        self.scroolCadastro = Scrollbar(self.frame_2,orient='vertical', command=self.lista_alunos.yview)
         self.lista_alunos.configure(yscroll=self.scroolCadastro.set)
         self.scroolCadastro.place(relx=0.96,rely=0.01,relwidth=0.04,relheight=0.90)
         self.lista_alunos.bind("<Double-1>",self.duplo_click)

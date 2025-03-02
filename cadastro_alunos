@@ -7,7 +7,40 @@ from tkinter import *
 from tkinter import ttk
 import sqlite3
 
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import SimpleDocTemplate, Image
+import webbrowser
+
+
 interface = Tk()
+
+#Gerando relatórios em PDF no Webbrowser
+class Relatorios():
+    def printAluno(self):
+        webbrowser.open("alunos.pdf")
+    
+    def gerar_relatorio_aluno(self):
+        self.can = canvas.Canvas("alunos.pdf")
+
+        self.nome_relarorio = self.nome_entry.get()
+        self.cpf_relatorio = self.cpf_entry.get()
+        self.nascimento_relatorio = self.nascimento_entry.get()
+        self.sus_relatorio = self.sus_entry.get()
+        self.telefone_relatorio = self.telefone_entry.get()
+        self.alergia_relatorio = self.alergia_entry.get()
+        self.observacao_relatorio = self.observacao_entry.get()
+
+        self.can.setFont('Helvetica-Bold',24)
+        self.can.drawString(200,790,"Ficha do Aluno")
+
+        self.can.showPage()
+        self.can.save()
+        self.printAluno()
+
+
 
 #criando a função de Limpar a Tela
 class Funcoes():
@@ -111,7 +144,7 @@ class Funcoes():
         self.limpar_tela()
 
 #criando uma classe para receber funções
-class Aplicativo(Funcoes):
+class Aplicativo(Funcoes,Relatorios):
     def __init__(self):
         self.interface = interface
         self.tela()
@@ -122,6 +155,7 @@ class Aplicativo(Funcoes):
         self.lista_frame2()
         self.montaTabela()
         self.select_lista()
+        self.menus()
         
         interface.mainloop()
 
@@ -242,5 +276,21 @@ class Aplicativo(Funcoes):
         self.scroolCadastro.place(relx=0.96,rely=0.01,relwidth=0.04,relheight=0.90)
         self.lista_alunos.bind("<Double-1>",self.duplo_click)
 
+#criando menus
+    def menus(self):
+        barra_menu = Menu(self.interface)
+        self.interface.config(menu=barra_menu)
+        menu1 = Menu(barra_menu)
+        menu2 = Menu(barra_menu)
+
+        def Quit():self.interface.destroy()
+
+        barra_menu.add_cascade(label="Opções",menu=menu1)
+        barra_menu.add_cascade(label="Relatório",menu= menu1)
+
+        menu1.add_command(label="Sair",command=Quit)
+        menu1.add_command(label="limpa tela",command=self.limpar_tela)
+
+        menu2.add_command(label="Dados do Aluno", command=self.gerar_relatorio_aluno)
 
 Aplicativo()

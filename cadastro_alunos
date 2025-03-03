@@ -166,6 +166,21 @@ class Funcoes():
         self.select_lista()
         self.limpar_tela()
 
+    def busca_aluno(self):
+        self.conecta_bd()
+        self.lista_alunos.delete(*self.lista_alunos.get_children())
+
+        self.nome_entry.insert(END,'%')
+        nome = self.nome_entry.get()
+        self.cursor.execute("""
+            SELECT Nome, cpf ,nascimento, sus , telefone,alergia, observacao FROM aluno 
+                            WHERE nome LIKE '%s' ORDER BY nome ASC """ % nome)
+        busca_nome_aluno = self.cursor.fetchall()
+        for i in busca_nome_aluno:
+            self.lista_alunos.insert("",END,values= i)
+        
+        self.limpar_tela()
+        self.desconecta_bd()
 #criando uma classe para receber funções
 class Aplicativo(Funcoes,Relatorios):
     def __init__(self):
@@ -251,7 +266,7 @@ class Aplicativo(Funcoes,Relatorios):
  #crinado botões CRUD, para Buscar, cadastrar, Limpar tela, Alterar e Deletar
 
     def botoes(self):
-        self.buscar = Button(self.frame_1,text='BUSCAR',bd=4)
+        self.buscar = Button(self.frame_1,text='BUSCAR',bd=4,command=self.busca_aluno)
         self.buscar.place(relx=0.82,rely=0.02,relwidth=0.15,relheight=0.15)
 
         self.cadastrar = Button(self.frame_1,text='CADASTRAR',bd=4, command= self.add_aluno)

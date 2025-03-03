@@ -90,7 +90,7 @@ class Funcoes():
                 cpf VARCHAR(11) NOT NULL PRIMARY KEY,
                 nascimento DATE(8),
                 sus Varchar(20),
-                telefone VARCHAR(12),
+                telefone INT(11),
                 alergia TEXT(40),
                 observacao TEXT(40)       
             );

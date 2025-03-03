@@ -34,7 +34,28 @@ class Relatorios():
         self.observacao_relatorio = self.observacao_entry.get()
 
         self.can.setFont('Helvetica-Bold',24)
-        self.can.drawString(200,790,"Ficha do Aluno")
+        self.can.drawString(200,780,"Ficha do Aluno")
+
+        self.can.setFont('Helvetica-Bold',16)
+        self.can.drawString(20,700,'Nome: ' + self.nome_relarorio)
+
+        self.can.setFont('Helvetica',14)
+        self.can.drawString(20,670,'CPF: ' + self.cpf_relatorio)
+
+        self.can.setFont('Helvetica',14)
+        self.can.drawString(20,640,'Nascimento: ' + self.nascimento_relatorio)
+
+        self.can.setFont('Helvetica',14)
+        self.can.drawString(20,610,'Nº do SUS: ' + self.sus_relatorio)
+
+        self.can.setFont('Helvetica', 14)
+        self.can.drawString(20,580,'Telefone: ' + self.telefone_relatorio)
+
+        self.can.setFont('Helvetica',14)
+        self.can.drawString(20,550,'Alergias: ' + self.alergia_relatorio)
+
+        self.can.setFont('Helvetica',14)
+        self.can.drawString(20,520,'Observações: ' + self.observacao_relatorio)
 
         self.can.showPage()
         self.can.save()
@@ -286,7 +307,7 @@ class Aplicativo(Funcoes,Relatorios):
         def Quit():self.interface.destroy()
 
         barra_menu.add_cascade(label="Opções",menu=menu1)
-        barra_menu.add_cascade(label="Relatório",menu= menu1)
+        barra_menu.add_cascade(label="Relatório",menu= menu2)
 
         menu1.add_command(label="Sair",command=Quit)
         menu1.add_command(label="limpa tela",command=self.limpar_tela)
